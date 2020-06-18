@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: 构建和自动测试
+      run: echo ok.
+
+    - name: 发布到测试环境
+      run: echo test.
+
+    - name: 发布到生产环境
+      if: github.action == 'closed' && github.pull_request.merged == 'true'
+      run: echo prod.
