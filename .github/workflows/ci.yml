@@ -17,7 +17,3 @@ jobs:
 
     - name: 发布到测试环境
       run: echo test.
-
-    - name: 发布到生产环境
-      if: github.action == 'closed' && github.pull_request.merged == 'true'
-      run: echo prod.
