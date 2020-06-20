@@ -10,5 +10,4 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          commands: example
-          repository: lotreal/slash-command-processor
+          config-from-file: .github/slash-command-dispatch.json
