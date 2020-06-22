@@ -6,10 +6,21 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          config-from-file: .github/slash-command-dispatch.json
+          config: >-
+            [
+              {
+                "command": "example",
+                "permission": "write",
+                "issue_type": "both",
+                "repository": "lotreal/slash-command-processor"
+              },
+              {
+                "command": "help",
+                "issue_type": "both",
+                "repository": "lotreal/slash-command-processor"
+              }
+            ]
